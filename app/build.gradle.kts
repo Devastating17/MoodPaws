@@ -64,5 +64,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.mpandroidchart)
+    implementation(libs.androidx.navigation.compose)
+
 
 }
