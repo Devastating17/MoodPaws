@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.mpandroidchart)
     implementation(libs.androidx.navigation.compose)
+    implementation("androidx.appcompat:appcompat:1.6.1")
 
 
 }

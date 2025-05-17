@@ -90,6 +90,12 @@ fun MoodSelector(
                 }
             }
         }
+        var showInfo by remember { mutableStateOf(false) }
+
+        IconButton(onClick = { showInfo = true }) {
+            Icon(Icons.Default.Info, contentDescription = "Mood Legend")
+        }
+
 
         if (showLegend) {
             AlertDialog(

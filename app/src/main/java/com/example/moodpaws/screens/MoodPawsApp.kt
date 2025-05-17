@@ -15,6 +15,8 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.ui.Modifier
 import androidx.compose.foundation.layout.padding
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 
 
 @Composable
@@ -28,15 +30,26 @@ fun MoodPawsApp() {
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = "entry",
+            startDestination = "home",
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable("entry") { MoodEntryScreen() }
+            composable("home") { HomeScreen(navController)  }
+            composable("entry"){ MoodEntryScreen() }
             composable("history") { MoodHistoryScreen() }
             composable("chart") { MoodChartScreen() }
+            composable("diary_entry") {
+                DiaryEntryScreen(viewModel = diaryViewModel, navController = navController)
+            }
+            composable("diary_list") {
+                DiaryListScreen(viewModel = diaryViewModel)
+            }
+
         }
     }
 }
+val diaryViewModel: DiaryViewModel = viewModel(
+    factory = ViewModelProvider.AndroidViewModelFactory(LocalContext.current.applicationContext as Application)
+)
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
     NavigationBar {
