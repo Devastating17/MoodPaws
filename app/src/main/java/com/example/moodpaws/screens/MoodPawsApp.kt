@@ -1,27 +1,27 @@
 package com.example.moodpaws.screens
 
+import android.app.Application
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.moodpaws.screens.MoodEntryScreen
-import com.example.moodpaws.screens.MoodHistoryScreen
-import com.example.moodpaws.screens.MoodChartScreen
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
 import androidx.compose.ui.Modifier
-import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
-
-
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.*
+import com.example.moodpaws.viewmodel.DiaryViewModel
+import com.example.moodpaws.viewmodel.MoodViewModel
 
 @Composable
 fun MoodPawsApp() {
-    val navController = rememberNavController()
+    val navController: NavHostController = rememberNavController()
+
+    val context = LocalContext.current
+    val diaryViewModel: DiaryViewModel = viewModel(
+        factory = androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory(
+            context.applicationContext as Application
+        )
+    )
 
     Scaffold(
         bottomBar = {
@@ -33,33 +33,22 @@ fun MoodPawsApp() {
             startDestination = "home",
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable("home") { HomeScreen(navController)  }
-            composable("entry"){ MoodEntryScreen() }
-            composable("history") { MoodHistoryScreen() }
-            composable("chart") { MoodChartScreen() }
+            composable("home") {
+                // Replace this with your actual HomeScreen
+                Text("Home Screen")
+            }
             composable("diary_entry") {
                 DiaryEntryScreen(viewModel = diaryViewModel, navController = navController)
             }
             composable("diary_list") {
                 DiaryListScreen(viewModel = diaryViewModel)
             }
-
         }
     }
 }
-val diaryViewModel: DiaryViewModel = viewModel(
-    factory = ViewModelProvider.AndroidViewModelFactory(LocalContext.current.applicationContext as Application)
-)
+
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {
-    NavigationBar {
-        NavigationBarItem(
-            selected = true,
-            onClick = { navController.navigate("entry") },
-            label = { Text("Entry") },
-            icon = { Icon(Icons.Default.Favorite, contentDescription = null) }
-        )
-    }
-}
 
+}
 

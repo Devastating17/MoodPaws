@@ -36,5 +36,13 @@ fun HomeScreen(navController: NavController) {
         Button(onClick = { navController.navigate("chart") }) {
             Text("Mood Chart")
         }
+        Button(onClick = { navController.navigate("diary_entry") }) {
+            Text("New Diary Entry")
+        }
+
+        Button(onClick = { navController.navigate("diary_list") }) {
+            Text("View Diary History")
+        }
+
     }
 }

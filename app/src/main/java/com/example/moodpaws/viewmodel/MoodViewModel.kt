@@ -1,5 +1,5 @@
 
-package com.example.moodpaws.screens
+package com.example.moodpaws.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

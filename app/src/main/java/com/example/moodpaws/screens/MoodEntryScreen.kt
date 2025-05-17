@@ -15,7 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.moodpaws.data.Mood
 import com.example.moodpaws.utils.Constants
 import java.time.LocalDate
-import com.example.moodpaws.screens.MoodViewModel
+import com.example.moodpaws.viewmodel.MoodViewModel
 
 @Composable
 fun MoodEntryScreen() {
