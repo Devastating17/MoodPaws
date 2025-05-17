@@ -12,13 +12,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import com.example.moodpaws.data.Mood
 import com.example.moodpaws.utils.Constants
 import java.time.LocalDate
 import com.example.moodpaws.viewmodel.MoodViewModel
 
 @Composable
-fun MoodEntryScreen() {
+fun MoodEntryScreen(viewModel: MoodViewModel, navController: NavController) {
     val context = LocalContext.current
     val viewModel: MoodViewModel = viewModel(
         factory = ViewModelProvider.AndroidViewModelFactory(context.applicationContext as Application)

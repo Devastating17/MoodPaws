@@ -23,7 +23,7 @@ import androidx.compose.runtime.livedata.observeAsState
 
 
 @Composable
-fun MoodChartScreen(viewModel: MoodViewModel) {
+fun MoodChartScreen(viewModel: MoodViewModel, navController: NavController) {
     var timeFrame by remember { mutableStateOf("week") }
     val context = LocalContext.current
     val filteredMoods by viewModel.filteredMoods.observeAsState(emptyList())
